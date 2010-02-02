@@ -1,22 +1,17 @@
-%define version 1.5.1
-%define rel 1
-%define release %mkrel %rel
-
 Name:		xml-security-c
-Version:	%{version}
-Release:	%{release}
+Version:	1.5.1
+Release:	%mkrel 2
 Summary:	C++ Implementation of W3C security standards for XML
 
 Group:		System/Libraries
 License:	ASL 2.0
 URL:		http://santuario.apache.org/c/
 Source:		http://santuario.apache.org/dist/c-library/%{name}-%{version}.tar.gz
-BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
+BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-root
 
 # xalan-c-devel
 BuildRequires:	xerces-c-devel 
 BuildRequires:	openssl-devel
-BuildRequires:	pkgconfig
 
 %description
 The xml-security-c library is a C++ implementation of the XML Digital Signature
@@ -43,14 +38,10 @@ XML Digital Signatures.
 
 %prep
 %setup -q
-# Remove bogus "-O2" from CXXFLAGS to avoid overriding RPM_OPT_FLAGS.
-sed -i -e 's/-O2 -DNDEBUG/-DNDEBUG/g' configure
 
 %build
-%configure --disable-static
-aclocal
-autoconf
-make %{?_smp_mflags}
+%configure2_5x --disable-static
+%make
 
 %check
 # Verify that what was compiled actually works.
@@ -58,7 +49,7 @@ make %{?_smp_mflags}
 
 %install
 rm -rf $RPM_BUILD_ROOT
-make install DESTDIR=$RPM_BUILD_ROOT CPPROG="cp -p"
+%makeinstall_std
 
 # We do not ship .la files.
 rm -f $RPM_BUILD_ROOT%{_libdir}/*.la
@@ -67,25 +58,14 @@ rm -f $RPM_BUILD_ROOT%{_libdir}/*.la
 # xml-security-c developers and they should have the whole source anyway.
 rm -rf $RPM_BUILD_ROOT%{_bindir}
 
-%post -p /sbin/ldconfig
-
-%postun -p /sbin/ldconfig
-
-
 %clean
 rm -rf $RPM_BUILD_ROOT
-
 
 %files
 %defattr(-,root,root,-)
 %{_libdir}/libxml-security-c.so.*
 
-
 %files devel
 %defattr(-,root,root,-)
 %{_includedir}/xsec
 %{_libdir}/libxml-security-c.so
-
-# Upstream does not provide any docs (yet!)
-# %doc CHANGELOG.txt
-
