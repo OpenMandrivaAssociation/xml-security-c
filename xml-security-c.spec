@@ -1,6 +1,6 @@
 Name:		xml-security-c
 Version:	1.5.1
-Release:	%mkrel 3
+Release:	%mkrel 4
 Summary:	C++ Implementation of W3C security standards for XML
 
 Group:		System/Libraries
