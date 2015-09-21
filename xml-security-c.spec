@@ -5,7 +5,7 @@
 
 Name:		xml-security-c
 Version:	1.7.3
-Release:	1
+Release:	2
 Summary:	C++ Implementation of W3C security standards for XML
 
 Group:		System/Libraries
@@ -38,6 +38,7 @@ XSLT transforms.
 Summary:	Development files for xml-security-c
 Group:		System/Libraries
 Requires:	%{libname} = %{EVRD}
+Provides:	xml-security-c-devel
 Requires:	xerces-c-devel
 Requires:	openssl-devel
 # There are a number of headers that can use NSS if HAVE_NSS is set to 1
