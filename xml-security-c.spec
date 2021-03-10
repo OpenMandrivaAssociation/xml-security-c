@@ -1,21 +1,21 @@
-%define major 17
+%define major 20
 %define libname %mklibname xml-security-c %{major}
 %define develname %mklibname xml-security-c -d
 
 
 Name:		xml-security-c
-Version:	1.7.3
-Release:	2
+Version:	2.0.2
+Release:	1
 Summary:	C++ Implementation of W3C security standards for XML
 
 Group:		System/Libraries
 License:	ASL 2.0
-URL:		http://santuario.apache.org/c/
-Source0:	http://santuario.apache.org/dist/c-library/%{name}-%{version}.tar.gz
+URL:		http://santuario.apache.org/cindex.html
+Source0:	https://downloads.apache.org/santuario/c-library/xml-security-c-%{version}.tar.bz2
 
 # xalan-c-devel
-BuildRequires:	xerces-c-devel 
-BuildRequires:	openssl-devel
+BuildRequires:	pkgconfig(xerces-c)
+BuildRequires:	pkgconfig(openssl)
 
 %description
 The xml-security-c library is a C++ implementation of the XML Digital Signature
@@ -55,13 +55,10 @@ XML Digital Signatures.
 
 %build
 %configure --disable-static
-%make
-
-%check
-%make check
+%make_build
 
 %install
-%makeinstall_std
+%make_install
 
 # Do not ship library test utilities. These are only needed for
 # xml-security-c developers and they should have the whole source anyway.
