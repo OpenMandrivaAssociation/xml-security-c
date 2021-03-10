@@ -39,8 +39,8 @@ Summary:	Development files for xml-security-c
 Group:		System/Libraries
 Requires:	%{libname} = %{EVRD}
 Provides:	xml-security-c-devel
-Requires:	xerces-c-devel
-Requires:	openssl-devel
+Requires:	pkgconfig(xerces-c)
+Requires:	pkgconfig(openssl)
 # There are a number of headers that can use NSS if HAVE_NSS is set to 1
 # Current build does not set it (configure does not even check for NSS)
 # so we do not include this dependency for now.
@@ -70,3 +70,4 @@ rm -rf %{buildroot}%{_bindir}
 %files -n %{develname}
 %{_includedir}/xsec
 %{_libdir}/libxml-security-c.so
+%{_libdir}/pkgconfig/xml-security-c.pc
