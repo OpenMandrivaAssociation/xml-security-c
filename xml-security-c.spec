@@ -4,7 +4,7 @@
 
 
 Name:		xml-security-c
-Version:	2.0.2
+Version:	2.0.4
 Release:	1
 Summary:	C++ Implementation of W3C security standards for XML
 
