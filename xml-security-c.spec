@@ -10,7 +10,7 @@ Summary:	C++ Implementation of W3C security standards for XML
 
 Group:		System/Libraries
 License:	ASL 2.0
-URL:		http://santuario.apache.org/cindex.html
+URL:		https://santuario.apache.org/cindex.html
 Source0:	https://downloads.apache.org/santuario/c-library/xml-security-c-%{version}.tar.bz2
 
 # xalan-c-devel
