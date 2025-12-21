@@ -14,6 +14,11 @@ URL:		https://santuario.apache.org/cindex.html
 Source0:	https://downloads.apache.org/santuario/c-library/xml-security-c-%{version}.tar.bz2
 
 # xalan-c-devel
+BuildRequires:	autoconf
+BuildRequires:	automake
+BuildRequires:	libtool-base
+BuildRequires:	slibtool
+BuildRequires:	make
 BuildRequires:	pkgconfig(xerces-c)
 BuildRequires:	pkgconfig(openssl)
 
